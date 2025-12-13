@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import styled from "styled-components";
+import MediaQuery from "react-responsive";
 
 
 const Container = styled.div`
@@ -9,10 +10,14 @@ const Container = styled.div`
     padding: 20px 30px;
     justify-content: center;
     border-bottom: 1px solid lightgray;
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
     `;
 
 const CoverImage = styled.img`
         object-fit: cover;
+        width: 250px;
         height: 352px;
         `;
 
@@ -56,6 +61,7 @@ const Close = styled.span`
   height: fit-content;
   padding: 8px;
   border-radius: 50%;
+  width: fit-content;
   cursor: pointer;
   opacity: 0.8;
 `;
@@ -112,6 +118,7 @@ const MovieInfoComponent = (props) => {
           </>
           ):("Loading...")}
         </Container>
+        
     
 );
 };

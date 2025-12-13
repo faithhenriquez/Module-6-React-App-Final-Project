@@ -4,6 +4,10 @@ import styled from "styled-components";
 import MovieComponent from "../components/MovieComponents";
 import MovieInfoComponent from "../components/MovieInfoComponent";
 
+import MediaQuery from "react-responsive";
+
+
+
 const Container = styled.div
   `display: flex;
   flex-direction: column;
@@ -13,11 +17,15 @@ const AppName = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  @media (max-width: 600px) {
+        font-size: 15px;
+    }
   `;
+
 
 const Header = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   background-color: #3272a7ff;
   color: white;
@@ -29,7 +37,7 @@ const Header = styled.div`
   `;
 const SearchBox= styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: coloumn;
   padding: 10px 10px;
   background-color: white;
   border-radius: 6px;
@@ -55,6 +63,16 @@ const SearchBox= styled.div`
   border: none;
   outline: none;
   margin-left: 15px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  padding: 10px 10px;
+  background-color: white;
+  border-radius: 6px;
+  margin-left: 20px;
+  width: 50%;
+  background-color: white;
+  align-item: center;
   `;
 
   const MovieListContainer =styled.div`
@@ -100,17 +118,18 @@ function Movies() {
   return (
       <Container>
         <Header>
+          <MediaQuery font-size={10} maxWidth={1800}>
           <AppName>
             <MovieImage src="/moviecamera.jpeg"></MovieImage>
-            React Movie App Library</AppName>
-            <SearchBox>
-              <SearchIcon src="/search-icon.svg">
-              </SearchIcon>
+            React Movie App Library
+            </AppName>
+            </MediaQuery>
+              <MediaQuery maxWidth={1800}>
               <SearchInput 
               placeholder="Search Movie" 
               value={searchQuery}
               onChange={onTextChange}/>
-            </SearchBox>
+              </MediaQuery>
           </Header>
           {selectedMovie && <MovieInfoComponent 
             selectedMovie ={selectedMovie}

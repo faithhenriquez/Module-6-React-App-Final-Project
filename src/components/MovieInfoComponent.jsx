@@ -75,9 +75,12 @@ const MovieInfoComponent = (props) => {
             .get(`https://www.omdbapi.com/?i=${selectedMovie}&apikey=fde10d57`)
             .then((response)=> setMovieInfo(response.data));
         }, [selectedMovie]);
+
+        console.log("Movie Info: ", movieInfo);
     return (
          <Container>
-            {movieInfo ? (<>
+            {movieInfo && "Title" in movieInfo && (
+            <>
           <CoverImage src={movieInfo?.Poster} alt={movieInfo?.Title} />
           <InfoColumn>
             <MovieName>
@@ -116,7 +119,7 @@ const MovieInfoComponent = (props) => {
           </InfoColumn>
           <Close onClick={() => props.onMovieSelect()}>X</Close>
           </>
-          ):("Loading...")}
+          )}
         </Container>
         
     
